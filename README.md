@@ -4,6 +4,12 @@ B.Tech first-year multidisciplinary project, VIT Vellore.
 
 A portable, solar-powered device that measures **pH, turbidity, temperature** and a **colorimetric heavy-metal signal**, then gives an instant, rule-based **IS 10500:2012 safety verdict**. It uses no AI: every decision comes from fixed threshold rules.
 
+**Live links**
+- ▶ Wokwi simulation: https://wokwi.com/projects/477928222740105217
+- 📊 Dashboard: https://vit-water-quality-monitor.streamlit.app
+
+Start the Wokwi simulation, open the dashboard, and the **Live device** tab shows the virtual device's readings within a few seconds.
+
 This repository holds the **software side** of the project:
 
 | Part | Folder | What it shows |
@@ -17,7 +23,7 @@ This repository holds the **software side** of the project:
 
 ## 1. Wokwi simulation (ESP32)
 
-**Run it:** open a new ESP32 project on [wokwi.com](https://wokwi.com). Replace `sketch.ino` and `diagram.json` with the files from `firmware/wokwi/`. Add `rules.h` (tab menu → *New file*) and `libraries.txt` (*Library Manager* → *+*, or paste the file). Then press ▶.
+**Run it:** open the [saved project](https://wokwi.com/projects/477928222740105217) and press ▶. To rebuild it from scratch, open a new ESP32 project on [wokwi.com](https://wokwi.com). Replace `sketch.ino` and `diagram.json` with the files from `firmware/wokwi/`. Add `rules.h` (tab menu → *New file*) and `libraries.txt` (*Library Manager* → *+*, or paste the file). Then press ▶.
 
 | Control in Wokwi | Stands in for | Try this |
 |---|---|---|
