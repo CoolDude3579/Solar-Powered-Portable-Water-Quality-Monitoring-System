@@ -12,6 +12,8 @@ plt.rcParams.update({"font.size": 11, "axes.edgecolor": "#b9b8b2", "axes.labelco
                      "xtick.color": INK, "ytick.color": INK, "axes.grid": True, "grid.color": GRID,
                      "axes.spines.top": False, "axes.spines.right": False})
 
+subprocess.run([sys.executable, os.path.join(HERE, "generate.py")], check=True)   # (re)build netlists
+
 def run(cir, dat, wr_singlescale=False):
     subprocess.run(["ngspice", "-b", os.path.join(HERE, cir)], capture_output=True, check=True)
     return np.loadtxt(os.path.join(HERE, dat))
