@@ -1,0 +1,39 @@
+* Solar PV -> TP4056 charger -> 18650 battery -> load  (24 h, 1 s = 1 h)
+Dpv pv 0 DPV
+Rsh pv 0 150
+Rs pv pvo 0.4
+Cin pvo 0 100u
+Rbat bat cell 0.08
+Cbat cell 0 {Cbat}
+Virr irr 0 PWL(0 0 6 0 7 0.10 8 0.30 9 0.55 10 0.78 11 0.93 12 1.0 13 0.93 14 0.78 15 0.55 16 0.30 17 0.10 18 0 24 0)
+Vload pload 0 PULSE({Psleep} {Pactive} 0 0.1m 0.1m {Ton} {Tper})
+* Solar panel 6 V / 2 W: photocurrent proportional to irradiance (1.0 = 1000 W/m2)
+Bph 0 pv I=0.40*V(irr)
+.model DPV D(Is=1n N=14)
+* TP4056 linear Li-ion charger: CC 1 A max, CV 4.2 V, needs ~4 V input, no reverse current
+Bchg pvo ichg I=min(1.0, max(0,(V(pvo)-V(bat)-0.15)/0.5)) * min(1,max(0,(V(pvo)-3.9)/0.2)) * min(1,max(0,(4.2-V(bat))/0.05))
+Vichg ichg bat 0
+* System load drawn from battery through boost converter (efficiency 85%)
+Vild bat iload 0
+Bload iload 0 I=V(pload)/(0.85*max(V(bat),2.5))
+* 2000 mAh 18650 cell: Q = 7200 C over 3.0-4.2 V -> 6000 F; divided by 3600 because 1 sim-second = 1 hour
+.param Cbat=6000/3600
+* Load: 30 s measurement + WiFi upload every 5 min at 1.0 W, deep sleep 10 mW otherwise
+.param Pactive=1.0 Psleep=0.01 Ton={30/3600} Tper={300/3600}
+.ic V(cell)=3.55 V(bat)=3.55
+* Power into / out of the battery (W) for the energy integrals
+Bpin pin 0 V=V(bat)*I(Vichg)
+Bpout pout 0 V=V(bat)*I(Vild)
+.meas TRAN Wh_harvested INTEG V(pin)
+.meas TRAN Wh_consumed INTEG V(pout)
+.meas TRAN Vbat_start FIND V(bat) AT=0.01
+.meas TRAN Vbat_end FIND V(bat) AT=24
+.meas TRAN Vbat_max MAX V(bat)
+.tran 1m 24 0 2m uic
+.options method=gear
+.control
+set wr_singlescale
+run
+wrdata /home/claude/solar-powered-portable-water-quality-monitoring-system/ltspice/_day.dat V(irr) V(pvo) V(bat) I(Vichg) I(Vild)
+.endc
+.end

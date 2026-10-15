@@ -6,3 +6,5 @@ __pycache__/
 *.net
 *.op.raw
 .venv/
+ltspice/_*.dat
+ltspice/_boost_*.cir
