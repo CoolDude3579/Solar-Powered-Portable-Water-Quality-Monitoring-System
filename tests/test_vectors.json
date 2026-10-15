@@ -1,0 +1,143 @@
+[
+ {
+  "name": "clean tap water",
+  "ph": 7.2,
+  "turbidity": 0.5,
+  "temp": 25,
+  "absorbance": 0.02,
+  "level": "SAFE",
+  "reasons": []
+ },
+ {
+  "name": "pH lower edge 6.5 is ok",
+  "ph": 6.5,
+  "turbidity": 1.0,
+  "temp": 25,
+  "absorbance": 0.2,
+  "level": "SAFE",
+  "reasons": []
+ },
+ {
+  "name": "pH upper edge 8.5 is ok",
+  "ph": 8.5,
+  "turbidity": 0.0,
+  "temp": 15,
+  "absorbance": 0.0,
+  "level": "SAFE",
+  "reasons": []
+ },
+ {
+  "name": "acidic",
+  "ph": 6.4,
+  "turbidity": 0.5,
+  "temp": 25,
+  "absorbance": 0.0,
+  "level": "UNSAFE",
+  "reasons": [
+   "PH_LOW"
+  ]
+ },
+ {
+  "name": "alkaline",
+  "ph": 9.1,
+  "turbidity": 0.5,
+  "temp": 25,
+  "absorbance": 0.0,
+  "level": "UNSAFE",
+  "reasons": [
+   "PH_HIGH"
+  ]
+ },
+ {
+  "name": "slightly turbid",
+  "ph": 7.0,
+  "turbidity": 3.0,
+  "temp": 25,
+  "absorbance": 0.0,
+  "level": "CAUTION",
+  "reasons": [
+   "TURB_ABOVE_ACCEPTABLE"
+  ]
+ },
+ {
+  "name": "turbidity 5.0 still caution",
+  "ph": 7.0,
+  "turbidity": 5.0,
+  "temp": 25,
+  "absorbance": 0.0,
+  "level": "CAUTION",
+  "reasons": [
+   "TURB_ABOVE_ACCEPTABLE"
+  ]
+ },
+ {
+  "name": "muddy",
+  "ph": 7.0,
+  "turbidity": 12,
+  "temp": 25,
+  "absorbance": 0.0,
+  "level": "UNSAFE",
+  "reasons": [
+   "TURB_HIGH"
+  ]
+ },
+ {
+  "name": "hot water",
+  "ph": 7.0,
+  "turbidity": 0.5,
+  "temp": 45,
+  "absorbance": 0.0,
+  "level": "CAUTION",
+  "reasons": [
+   "TEMP_HIGH"
+  ]
+ },
+ {
+  "name": "temp sensor unplugged",
+  "ph": 7.0,
+  "turbidity": 0.5,
+  "temp": -127,
+  "absorbance": 0.0,
+  "level": "CAUTION",
+  "reasons": [
+   "TEMP_SENSOR_FAULT"
+  ]
+ },
+ {
+  "name": "heavy metal only",
+  "ph": 7.0,
+  "turbidity": 0.5,
+  "temp": 25,
+  "absorbance": 0.35,
+  "level": "CRITICAL",
+  "reasons": [
+   "HEAVY_METAL"
+  ]
+ },
+ {
+  "name": "everything wrong",
+  "ph": 5.0,
+  "turbidity": 40,
+  "temp": 45,
+  "absorbance": 0.9,
+  "level": "CRITICAL",
+  "reasons": [
+   "PH_LOW",
+   "TURB_HIGH",
+   "TEMP_HIGH",
+   "HEAVY_METAL"
+  ]
+ },
+ {
+  "name": "acidic + turbid caution",
+  "ph": 6.0,
+  "turbidity": 2.0,
+  "temp": 25,
+  "absorbance": 0.0,
+  "level": "UNSAFE",
+  "reasons": [
+   "PH_LOW",
+   "TURB_ABOVE_ACCEPTABLE"
+  ]
+ }
+]

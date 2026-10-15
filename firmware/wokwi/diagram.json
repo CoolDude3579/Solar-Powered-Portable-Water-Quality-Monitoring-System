@@ -1,0 +1,425 @@
+{
+  "version": 1,
+  "author": "Dhruv (VIT Vellore)",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -198,
+      "left": -6,
+      "attrs": {
+        "pins": "i2c"
+      }
+    },
+    {
+      "type": "wokwi-slide-potentiometer",
+      "id": "potPh",
+      "top": -10,
+      "left": -360,
+      "attrs": {
+        "travelLength": "30",
+        "value": "512"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "txtPh",
+      "top": -30,
+      "left": -330,
+      "attrs": {
+        "text": "pH probe (0-14)"
+      }
+    },
+    {
+      "type": "wokwi-slide-potentiometer",
+      "id": "potTurb",
+      "top": 80,
+      "left": -360,
+      "attrs": {
+        "travelLength": "30",
+        "value": "80"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "txtTurb",
+      "top": 60,
+      "left": -340,
+      "attrs": {
+        "text": "Turbidity sensor"
+      }
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": 170,
+      "left": -380,
+      "attrs": {
+        "lux": "500"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "txtLdr",
+      "top": 150,
+      "left": -370,
+      "attrs": {
+        "text": "Colorimeter light sensor"
+      }
+    },
+    {
+      "type": "wokwi-ds18b20",
+      "id": "temp1",
+      "top": 250,
+      "left": -150,
+      "attrs": {
+        "temperature": "25"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rPull",
+      "top": 225,
+      "left": -95,
+      "rotate": 90,
+      "attrs": {
+        "value": "4700"
+      }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "potBat",
+      "top": 300,
+      "left": 20,
+      "attrs": {
+        "value": "700"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "txtBat",
+      "top": 395,
+      "left": 10,
+      "attrs": {
+        "text": "Battery V"
+      }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "potSolar",
+      "top": 300,
+      "left": 120,
+      "attrs": {
+        "value": "850"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "txtSolar",
+      "top": 395,
+      "left": 115,
+      "attrs": {
+        "text": "Solar V"
+      }
+    },
+    {
+      "type": "wokwi-rgb-led",
+      "id": "rgb1",
+      "top": 20,
+      "left": 260,
+      "attrs": {
+        "common": "cathode"
+      }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "txtRgb",
+      "top": 0,
+      "left": 240,
+      "attrs": {
+        "text": "Status LED"
+      }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 100,
+      "left": 330,
+      "attrs": {
+        "volume": "0.1"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btnCal",
+      "top": 190,
+      "left": 240,
+      "attrs": {
+        "color": "blue",
+        "label": "CAL BLANK",
+        "key": "c"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btnPage",
+      "top": 250,
+      "left": 240,
+      "attrs": {
+        "color": "green",
+        "label": "NEXT PAGE",
+        "key": "n"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btnMute",
+      "top": 310,
+      "left": 240,
+      "attrs": {
+        "color": "red",
+        "label": "MUTE",
+        "key": "m"
+      }
+    }
+  ],
+  "connections": [
+    [
+      "esp:TX",
+      "$serialMonitor:RX",
+      "",
+      []
+    ],
+    [
+      "esp:RX",
+      "$serialMonitor:TX",
+      "",
+      []
+    ],
+    [
+      "lcd1:GND",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+    [
+      "lcd1:VCC",
+      "esp:5V",
+      "red",
+      []
+    ],
+    [
+      "lcd1:SDA",
+      "esp:21",
+      "green",
+      []
+    ],
+    [
+      "lcd1:SCL",
+      "esp:22",
+      "purple",
+      []
+    ],
+    [
+      "potPh:VCC",
+      "esp:3V3",
+      "red",
+      []
+    ],
+    [
+      "potPh:GND",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "potPh:SIG",
+      "esp:34",
+      "orange",
+      []
+    ],
+    [
+      "potTurb:VCC",
+      "esp:3V3",
+      "red",
+      []
+    ],
+    [
+      "potTurb:GND",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "potTurb:SIG",
+      "esp:35",
+      "yellow",
+      []
+    ],
+    [
+      "ldr1:VCC",
+      "esp:3V3",
+      "red",
+      []
+    ],
+    [
+      "ldr1:GND",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "ldr1:AO",
+      "esp:32",
+      "cyan",
+      []
+    ],
+    [
+      "temp1:VCC",
+      "esp:3V3",
+      "red",
+      []
+    ],
+    [
+      "temp1:GND",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "temp1:DQ",
+      "esp:4",
+      "blue",
+      []
+    ],
+    [
+      "rPull:1",
+      "esp:3V3",
+      "red",
+      []
+    ],
+    [
+      "rPull:2",
+      "temp1:DQ",
+      "blue",
+      []
+    ],
+    [
+      "potBat:VCC",
+      "esp:3V3",
+      "red",
+      []
+    ],
+    [
+      "potBat:GND",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "potBat:SIG",
+      "esp:33",
+      "magenta",
+      []
+    ],
+    [
+      "potSolar:VCC",
+      "esp:3V3",
+      "red",
+      []
+    ],
+    [
+      "potSolar:GND",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "potSolar:SIG",
+      "esp:VP",
+      "gold",
+      []
+    ],
+    [
+      "rgb1:R",
+      "esp:26",
+      "red",
+      []
+    ],
+    [
+      "rgb1:G",
+      "esp:27",
+      "green",
+      []
+    ],
+    [
+      "rgb1:B",
+      "esp:14",
+      "blue",
+      []
+    ],
+    [
+      "rgb1:COM",
+      "esp:GND.3",
+      "black",
+      []
+    ],
+    [
+      "bz1:2",
+      "esp:25",
+      "orange",
+      []
+    ],
+    [
+      "bz1:1",
+      "esp:GND.3",
+      "black",
+      []
+    ],
+    [
+      "btnCal:1.l",
+      "esp:GND.3",
+      "black",
+      []
+    ],
+    [
+      "btnCal:2.l",
+      "esp:18",
+      "gray",
+      []
+    ],
+    [
+      "btnPage:1.l",
+      "esp:GND.3",
+      "black",
+      []
+    ],
+    [
+      "btnPage:2.l",
+      "esp:19",
+      "gray",
+      []
+    ],
+    [
+      "btnMute:1.l",
+      "esp:GND.3",
+      "black",
+      []
+    ],
+    [
+      "btnMute:2.l",
+      "esp:23",
+      "gray",
+      []
+    ]
+  ],
+  "dependencies": {}
+}

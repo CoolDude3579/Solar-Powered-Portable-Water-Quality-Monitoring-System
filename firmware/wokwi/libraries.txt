@@ -1,0 +1,5 @@
+# Wokwi Library List
+LiquidCrystal I2C
+OneWire
+DallasTemperature
+PubSubClient

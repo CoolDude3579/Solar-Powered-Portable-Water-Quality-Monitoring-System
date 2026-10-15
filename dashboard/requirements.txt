@@ -1,0 +1,4 @@
+streamlit>=1.37
+pandas
+plotly
+paho-mqtt>=2.0
