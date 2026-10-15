@@ -1,0 +1,3 @@
+# Solar-Powered Portable Water Quality Monitoring System
+
+B.Tech multidisciplinary project. Setting up...
